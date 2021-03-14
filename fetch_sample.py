@@ -17,13 +17,21 @@ def get_samples(url):
     soup = BeautifulSoup(r.text, "html.parser")
     elements_list = soup.find_all("pre")
 
-    #Delete duplicated and variable elements
     tmp = []
+    cnt = 0
     
     for i in elements_list:
 
-        if not "<var" in str(i).split(">") and not i in tmp:
+        if cnt == 6:
+            break
+
+        if not "<var" in str(i).split(">"): 
             tmp.append(i)
+            cnt += 1
+
+    #Delete duplicated elements
+    if tmp[0] == tmp[-2] and tmp[1] == tmp[-1]:
+        tmp = tmp[0:-2] 
 
 
     elements_list = tmp

@@ -7,11 +7,11 @@ OS_NAME = os.name
 #Change directory delimiter by OS
 #Windows
 if OS_NAME == "nt":
-    PATH = __file__.replace(r"\util.py", "") + "\work"
+    PATH = __file__.replace(r"\util.py", "") + "\work\\"  
 
 #Posix
 else:
-    PATH = __file__.replace("/util.py", "") + "/work"
+    PATH = __file__.replace("/util.py", "") + "/work/"
 
 
 def form_output(t):
@@ -52,8 +52,8 @@ def load_samples():
 
     while True:
 
-        input_filename = "/input" + str(cnt)
-        output_filename = "/output" + str(cnt)
+        input_filename = "input" + str(cnt)
+        output_filename = "output" + str(cnt)
 
         try:
             with open(PATH + input_filename, "r") as f:
@@ -76,7 +76,8 @@ def move_current_directory():
 
 def remove_stored_samples():
 
-    for f in glob.glob(PATH + "*put*"):
+    file_list = glob.glob(PATH+ "input*") + glob.glob(PATH + "output*")
+    for f in file_list: 
 
         if os.path.isfile(f):
             os.remove(f)

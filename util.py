@@ -87,11 +87,21 @@ def move_current_directory():
 
 def remove_stored_samples():
 
-    file_list = glob.glob(PATH+ "input*") + glob.glob(PATH + "output*")
+    file_list = glob.glob(PATH + "input*") + glob.glob(PATH + "output*")
     for f in file_list: 
 
         if os.path.isfile(f):
             os.remove(f)
+
+
+def reset():
+
+    remove_stored_samples()
+    with open(PATH + "url", "w") as f:
+        f.write("")
+
+    if os.path.isfile(PATH + "tmp.out"):
+        os.remove(PATH + "tmp.out")
 
 
 def update_url(url):

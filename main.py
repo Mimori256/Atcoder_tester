@@ -8,6 +8,18 @@ from util import *
 
 def main():
 
+    #Check commandline argument
+    args = sys.argv
+
+    if len(args) == 2 and args[1] == "--reset":
+        reset()
+        print("Complete")
+        sys.exit()
+
+    elif len(args) > 1 and args[1] != "--reset":
+        print("Invalid argument")
+        sys.exit()
+
     url=str(input("URL:"))
     same_url = is_same_url(url)
 

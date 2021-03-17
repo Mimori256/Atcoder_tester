@@ -22,6 +22,17 @@ def form_output(t):
     return t[1::]
 
 
+def generate_command(i):
+
+    if OS_NAME == "nt":
+        cmd = "type {} | tmp.out".format("input" + str(i+1))
+
+    else:
+        cmd = "cat {} | ./tmp.out".format("input" + str(i+1))
+
+    return cmd
+
+
 def is_same_url(url):
 
     if OS_NAME == "nt":

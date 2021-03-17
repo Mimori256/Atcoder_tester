@@ -53,7 +53,7 @@ def main():
 
         print("Sample {}:    ".format(i+1), end="")
 
-        cmd = "cat {} | ./tmp.out".format("input" + str(i+1))
+        cmd = generate_command(i) 
 
         try:
             output = form_output(str(sp.check_output(cmd, shell=True)))

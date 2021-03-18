@@ -104,6 +104,11 @@ def reset():
         os.remove(PATH + "tmp.out")
 
 
+def show_help():
+
+    with open(PATH + "help", "r") as f:
+        print(f.read())
+
 def update_url(url):
 
     with open(PATH + "/url", "w") as f:

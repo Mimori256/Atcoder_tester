@@ -10,10 +10,15 @@ def main():
 
     #Check commandline argument
     args = sys.argv
+    arg_len = len(args)
 
-    if len(args) == 2 and args[1] == "--reset":
+    if arg_len == 2 and args[1] == "--reset":
         reset()
         print("Complete")
+        sys.exit()
+
+    elif arg_len == 2 and args[1] == "--help":
+        show_help()
         sys.exit()
 
     elif len(args) > 1 and args[1] != "--reset":
